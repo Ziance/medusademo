@@ -1,0 +1,21 @@
+FROM node:18.19-alpine as builder
+
+WORKDIR /app/medusa
+
+COPY package.json .
+COPY develop.sh .
+COPY yarn.* .
+
+# Install dependencies
+RUN yarn install
+
+# Install the medusa-cli
+RUN yarn global add @medusajs/medusa-cli@latest
+
+# Add the remaining files
+COPY . .
+
+EXPOSE 9000
+
+# Set the default command to run when the container starts
+ENTRYPOINT ["sh", "develop.sh"]

@@ -1,0 +1,24 @@
+FROM node:18.19-alpine as builder
+
+WORKDIR /app/admin
+
+# Copy the package.json and yarn lock files to the working directory
+COPY package.json .
+COPY yarn.* .
+
+# Install sharp to enable image precessing
+RUN yarn add sharp@v0.33.1
+
+# Install the dependencies
+RUN yarn install
+
+# Copy all files in the current directory (.) to the working directory in the container
+COPY . .
+
+# Run the yarn build command to build the application
+RUN yarn run build
+
+EXPOSE 7001
+
+# Set the default command to serve the built application
+ENTRYPOINT [ "yarn", "serve"]
