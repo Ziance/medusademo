@@ -15,7 +15,7 @@
 
   "scripts": {
     "serve": "medusa start",
-    "start": "medusa develop",
+    "start": "medusa start",
     "heroku-postbuild": "medusa migrations run",
     "build:admin": "medusa-admin build --deployment",
     "prepare": "npm run build",
