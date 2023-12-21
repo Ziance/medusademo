@@ -15,8 +15,9 @@
 
   "scripts": {
     "serve": "medusa start",
-    "start": "medusa start",
+    "start": "medusa develop",
     "heroku-postbuild": "medusa migrations run",
+    "build:admin": "medusa-admin build --deployment",
     "prepare": "npm run build",
     "build": "babel src -d dist --extensions \".ts,.js\""
 },

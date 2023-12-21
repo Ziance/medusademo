@@ -36,6 +36,8 @@ const modules = {
   },*/
 };
 
+console.log("VARS", process.env.JWT_SECRET, process.env.DATABASE_URL);
+
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
   jwtSecret: process.env.JWT_SECRET,
